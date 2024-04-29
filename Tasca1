@@ -1,0 +1,58 @@
+/*
+		Tasca 1:
+		Imprimir per pantalla l’identificador, latitud (lat), l’longitud (lon), 
+		així com el nom (name), del element XML viejoRoble construit en aquest apartat 2.2.
+		
+		Teniu en compte que, almenys, haureu de transformar latitud i longitud a tipus double.
+		
+		Recordeu que en la solució de la pràctica haureu de recollir tots els punts d’interés, 
+		que per definició, són nodes que no són nodes de camí que tenen un atribut name.
+	*/
+  
+	if (viejoRoble.id_element == "node") {
+		// En cas que sigui un node, recorrem els seus atributs
+		for (int i = 0; i < viejoRoble.atributs.size(); i++) {
+			// Iterem fins trobar el atribut que ens interessa
+			if (viejoRoble.atributs[i].first == "lat") {
+				cout << "Latitud: " << viejoRoble.atributs[i].second << endl;
+				i++;
+				cout << "Longitud: " << viejoRoble.atributs[i].second << endl;
+			}
+		}
+		for (int i = 0; i < viejoRoble.fills.size(); i++) {
+			// Iterem fins trobar el atribut que ens interessa
+			if (viejoRoble.fills[i].second[0].second == "name") {
+				cout << "Name: " << viejoRoble.fills[i].second[1].second << endl;
+			}
+		}
+
+	}
+  
+  /*
+		Tasca 2: 
+		Imprimir per pantalla els identificadors dels nodes 
+		que formen el XmlElement camiJoaquim, així com el valor del atribut highway. 
+		
+		Recordeu que en la solució de la pràctica només haureu de tenir en compte 
+		tots els camins que tenen el tag highway (independentment del valor que pugui tenir), 
+		així com saber quins nodes de tipus camí, formen cada camí.
+	*/
+
+if (camiJoaquim.id_element == "way") {
+		// En cas que sigui un cami, recorrem els seus fills
+		
+		for (int i = 0; i < camiJoaquim.fills.size(); i++) {
+			// Iterem fins trobar el atribut que ens interessa
+			while (camiJoaquim.fills[i].first == "nd") {
+				cout << "Referencia: " << camiJoaquim.fills[i].second[0].second << endl;
+				i++;
+			}
+
+			if (camiJoaquim.fills[i].second[0].second == "highway") {
+				cout << "Highway: " << camiJoaquim.fills[i].second[1].second << endl;
+			}
+
+		}
+
+	}
+	
